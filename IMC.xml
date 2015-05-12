@@ -8081,4 +8081,20 @@
       :ref:`ParametersXml` message.
     </description>
   </message>
+
+  <message id="895" name="Parser Output" abbrev="ParserOutput">
+    <description>
+      This message contains the output of a parser operation
+    </description>
+    <field name="Result" abbrev="result" type="plaintext">.
+      <description>
+        Output symbol id.
+      </description>
+    </field>
+    <field name="Source Entity Label" abbrev="source_entity" type="plaintext" >
+      <description>
+        Contains the source entity label that produced that particular parse operation.
+      </description>
+    </field>
+  </message>
 </messages>
