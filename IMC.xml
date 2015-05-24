@@ -7517,6 +7517,32 @@
       <description>A map with additional event information.</description>
     </field>
   </message>
+  
+  <message id="670" abbrev="AssetStatus" name="Asset Status" source="vehicle,ccu">
+  	<field name="Latitude" abbrev="lat" type="fp64_t" unit="rad"/>
+  	<field name="Longitude" abbrev="lon" type="fp64_t" unit="rad"/>
+  	<field name="Altitude" abbrev="alt" type="fp32_t" unit="m">
+	  <description>Altitude of the asset. -1 if not available.</description>
+  	</field>
+  	<field name="Depth" abbrev="depth" type="fp32_t" unit="m">
+  	  <description>Depth of the asset. -1 if not applicable.</description>
+  	</field>
+  	<field name="Heading" abbrev="heading" type="fp32_t" unit="rad">
+  	  <description>The orientation of the asset, relative to north.</description>
+  	</field>
+  	<field name="Plan Identifier" abbrev="plan" type="plaintext">
+  	  <description>The Id of the plan being executed by this asset.</description>
+  	</field>
+  	<field name="Plan Progress" abbrev="progress" type="int8_t" unit="%">
+  	  <description>The percentage of completion of the plan being executed or -1 if no plan is running.</description>
+  	</field>
+  	<field name="Available Fuel" abbrev="fuel" type="int8_t" unit="%">
+  	  <description>The percentage of fuel left or -1 if not applicable.</description>
+  	</field>
+  	<field name="Extra Info" abbrev="info" type="plaintext" unit="TupleList">
+  	  <description>Additional information can be included in this field.</description>
+  	</field>
+  </message>
 
   <!-- Vision -->
   <message id="702" name="Compressed Image" abbrev="CompressedImage" source="ccu, vehicle">
