@@ -7538,33 +7538,24 @@
     <description>
     	This message is used to transmit HyperSpectral data in real-time.
     </description>
-    
-    <field name="Start Frequency" abbrev="start_freq" type="fp32_t" unit="nm"/>
-    <field name="End Frequency" abbrev="end_freq" type="fp32_t" unit="nm"/>    
-    <field name="Format" abbrev="format" type="uint8_t" unit="Enumerated" prefix="FMT">
-    	<value abbrev="JPEG" name="JPEG" id="1"/>
-    	<value abbrev="PNG" name="PNG" id="2"/>
-    	<value abbrev="BMP" name="BMP" id="3"/>
-    </field>        
+    <field name="Wavelength" abbrev="wavelen" type="fp32_t" unit="nm"/>
+    <field name="Gain" abbrev="gain" type="fp32_t"/>
     <field name="Image Data" abbrev="data" type="rawdata"/>
   </message>
   
   <message id="711" name="HyperSpectral Snapshot" abbrev="HyperSnapshot" source="vehicle">
 	<description>
-    	This message includes a series of hyperspectral samples over the same start and 
-    	end frequencies (spectrum slice).  
+    	This message includes a series of hyperspectral samples over several wavelengths
+        at the same time instant (spectrum slice).  
     </description>
-    <field name="Start Time" abbrev="start_time" type="fp64_t" unit="s"/>
-    <field name="End Time" abbrev="end_time" type="fp64_t" unit="s"/>
-    <field name="Historical Data" abbrev="data" type="message-list" message-type="HyperSpecData"/>
+    <field name="Spectral Data" abbrev="data" type="message-list" message-type="HyperSpecData"/>
   </message>
   
   <message id="712" name="HyperSpectral Snapshot Request" abbrev="HyperSnapRequest" source="ccu">
 	<description>
     	This message is used to request a specific slice of the spectrum to be sent continuously to ground.  
     </description>
-    <field name="Start Frequency" abbrev="start_freq" type="fp32_t" unit="nm"/>
-    <field name="End Frequency" abbrev="end_freq" type="fp32_t" unit="nm"/>    
+    <field name="Wavelengths" abbrev="wavelengths" type="plaintext" unit="nm"/>
   </message>
   
   <!-- External -->
