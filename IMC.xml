@@ -182,6 +182,7 @@
     <unit abbrev="dB" name="Decibel"/>
     <unit abbrev="dB/m" name="Decibel per meter"/>
     <unit abbrev="dBHz" name="Decibel hertz"/>
+    <unit abbrev="dm" name="Decimeter"/>
     <unit abbrev="°" name="Degree"/>
     <unit abbrev="°C" name="Degree Celsius"/>
     <unit abbrev="G" name="Gauss"/>
@@ -1495,6 +1496,34 @@
       <value abbrev="EXPIRED" name="Message's TTL has expired. Transmition cancelled." id="5"/>
     </field>
     <field name="Status Text" abbrev="text" type="plaintext"/>
+  </message>
+  
+  <message id="175" name="Concise Report" abbrev="ConciseReport" source="ccu,vehicle" flags="periodic">
+  	<description>
+  	  This message is broadcasted periodically by all systems and through different communication means.
+  	</description>
+  	
+  	<field name="Latitude" abbrev="lat" type="fp32_t" unit="°"/>
+  	<field name="Longitude" abbrev="lon" type="fp32_t" unit="°"/>
+  	<field name="Depth" abbrev="depth" type="int16_t" unit="dm"/>
+  	<field name="Altitude" abbrev="alt" type="int16_t" unit="dm"/>
+  	<field name="Height" abbrev="height" type="int16_t" unit="dm"/>
+  	<field name="Speed" abbrev="speed" type="int16_t" unit="dm"/>
+  	<field name="Heading" abbrev="heading" type="uint16_t">
+  	  <description>
+  	  	This field encodes the heading of the vehicle as an unsigned short value. The heading (h) can be 
+  	  	computed from this value (v) as follows:
+  	  	 * ```h == (v * PI) / 32767.5```
+  	  </description>
+  	</field>
+  	<field name="Fuel Level" abbrev="fuel" type="uint8_t" unit="%"/>
+  	<field name="Mode" abbrev="mode" type="uint8_t" unit="Enumerated" prefix="MODE">
+  	  <value abbrev="IDLE" name="Idle" id="0"/>
+  	  <value abbrev="TELEOP" name="Tele-operation" id="1"/>
+  	  <value abbrev="EXEC" name="Executing" id="2"/>
+  	  <value abbrev="BOOT" name="Booting" id="3"/>
+  	  <value abbrev="ERROR" name="Error" id="4"/>  	  
+  	</field>
   </message>
 
   <message id="180" name="Group Membership State" abbrev="GroupMembershipState" source="ccu,vehicle" flags="periodic">
