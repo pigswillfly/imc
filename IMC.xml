@@ -8160,4 +8160,20 @@
     
   <!-- END   NECSAVE Messages -->
   
+  <message id="2003" abbrev="pwmBBB" name="UAV pwmBBB" source="vehicle,ccu">
+    <field name="Attribute Name" abbrev="name" type="plaintext">
+      <description>Name of this attribute.</description>
+    </field>
+    <field name="ServoStatus" abbrev="servstat" type="uint8_t" unit="Enumerated" prefix="SERVSTAT">
+      <value abbrev="OPEN" name="Open" id="1"/>
+      <value abbrev="CLOSED" name="Closed" id="2"/>
+    </field>
+    <field name="ServoMinimum" abbrev="servmin" type="plaintext">
+      <description>Minimum range of this interval. Empty text means no min limit.</description>
+    </field>
+    <field name="ServoMaximum" abbrev="servmax" type="plaintext">
+      <description>Maximum range of this interval. Empty text means no max limit.</description>
+    </field>
+  </message>
+  
 </messages>
