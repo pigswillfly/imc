@@ -2352,7 +2352,7 @@
         The value of the wind speed as measured by the sensor.
       </description>
     </field>
-    <field name="Turbulence" abbrev="turbulence" type="fp32_t" unit="m/s">
+    <field name="Turbulence" abbrev="turbulence" type="fp32_t" unit="m/s/s">
       <description>
         Wind turbulence intensity.
       </description>
@@ -2697,6 +2697,151 @@
     <field name="Value" abbrev="value" type="fp32_t" unit="NTU">
       <description>
         Turbidity reading.
+      </description>
+    </field>
+  </message>
+
+  <message id="289" name="Velocity" abbrev="velocity" source="vehicle" flags="periodic">
+    <description>
+      Vector quantifying the direction and/or magnitude of the velocity.
+    </description>
+    <field name="Target" abbrev="trg" type="uint8_t" unit="Enumerated" prefix="TRG">
+      <description>
+        Target for which the velocity is measured or estimated.
+      </description>
+      <value id="0" name="Vehicle" abbrev="VEHICLE"/>
+      <value id="1" name="Water" abbrev="WATER"/>
+      <value id="2" name="Air" abbrev="AIR"/>
+    </field>
+    <field name="Reference" abbrev="ref" type="uint8_t" unit="Enumerated" prefix="REF">
+      <description>
+        Medium relative to which the velocity is measured or estimated.
+      </description>
+      <value id="0" name="Relative to the ground" abbrev="GROUND"/>
+      <value id="1" name="Relative to the water" abbrev="WATER"/>
+      <value id="2" name="Relative to the air" abbrev="AIR"/>
+    </field>
+    <field name="Source" abbrev="src" type="uint8_t" unit="Enumerated" prefix="SRC">
+      <description>
+        Target for which the velocity is measured or estimated.
+      </description>
+      <value id="0" name="Sensor" abbrev="SENSOR"/>
+      <value id="1" name="Filter" abbrev="FILTER"/>
+      <value id="2" name="External" abbrev="EXTERNAL"/>
+    </field>
+    <field name="Type" abbrev="type" type="plaintext">
+      <description>
+        Optional field to specify a type (e.g. Ground Velocity, Indicated Airspeed, True Airspeed, etc.).
+      </description>
+    </field>
+    <field name="Validity" abbrev="validity" unit="Bitfield" type="uint8_t" prefix="VAL">
+      <description>
+        Each bit of this field represents if a given velocity
+        component or magnitude is valid.
+      </description>
+      <value id="0x01" abbrev="VEL_X" name="X component is valid"/>
+      <value id="0x02" abbrev="VEL_Y" name="Y component is valid"/>
+      <value id="0x04" abbrev="VEL_Z" name="Z component is valid"/>
+      <value id="0x08" abbrev="VEL_MAG" name="total magnitude is valid"/>
+    </field>
+    <field name="X" abbrev="x" type="fp64_t" unit="m/s">
+      <description>
+        X component.
+      </description>
+    </field>
+    <field name="Y" abbrev="y" type="fp64_t" unit="m/s">
+      <description>
+        Y component.
+      </description>
+    </field>
+    <field name="Z" abbrev="z" type="fp64_t" unit="m/s">
+      <description>
+        Z component.
+      </description>
+    </field>
+    <field name="Magnitude" abbrev="mag" type="fp64_t" unit="m/s">
+      <description>
+        Total magnitude.
+      </description>
+    </field>
+  </message>
+
+  <message id="290" name="Stream turbulence" abbrev="StreamTurbulence" source="vehicle" flags="periodic">
+    <description>
+      Vector quantifying the direction and/or magnitude of the stream
+      turbulence to which a device is exposed to.
+    </description>
+    <field name="Medium" abbrev="medium" type="uint8_t" unit="Enumerated" prefix="MED">
+      <description>
+        Stream medium type.
+      </description>
+      <value id="0" name="Relative to the water" abbrev="WATER"/>
+      <value id="1" name="Relative to the air" abbrev="AIR"/>
+    </field>
+    <field name="Validity" abbrev="validity" unit="Bitfield" type="uint16_t" prefix="VAL">
+      <description>
+        Each bit of this field represents if a given turbulence
+        component or magnitude is valid.
+      </description>
+      <value id="0x001" abbrev="VEL_X" name="X component is valid"/>
+      <value id="0x002" abbrev="VEL_Y" name="Y component is valid"/>
+      <value id="0x004" abbrev="VEL_Z" name="Z component is valid"/>
+      <value id="0x008" abbrev="VEL_MAG" name="total magnitude is valid"/>
+      <value id="0x016" abbrev="FREQ_X" name="X component frequency is valid"/>
+      <value id="0x032" abbrev="FREQ_Y" name="Y component frequency is valid"/>
+      <value id="0x064" abbrev="FREQ_Z" name="Z component frequency is valid"/>
+      <value id="0x128" abbrev="FREQ_MAG" name="magnitude frequency is valid"/>
+    </field>
+    <field name="X" abbrev="x" type="fp64_t" unit="m/s">
+      <description>
+        X component.
+      </description>
+    </field>
+    <field name="Y" abbrev="y" type="fp64_t" unit="m/s">
+      <description>
+        Y component.
+      </description>
+    </field>
+    <field name="Z" abbrev="z" type="fp64_t" unit="m/s">
+      <description>
+        Z component.
+      </description>
+    </field>
+    <field name="Magnitude" abbrev="mag" type="fp64_t" unit="m/s">
+      <description>
+        Total magnitude.
+      </description>
+    </field>
+    <field name="X frequency" abbrev="x_freq" type="fp64_t" unit="Hz">
+      <description>
+        X component frequency.
+      </description>
+    </field>
+    <field name="Y frequency" abbrev="y_freq" type="fp64_t" unit="Hz">
+      <description>
+        Y component frequency.
+      </description>
+    </field>
+    <field name="Z frequency" abbrev="z_freq" type="fp64_t" unit="Hz">
+      <description>
+        Z component frequency.
+      </description>
+    </field>
+    <field name="Magnitude frequency" abbrev="mag_freq" type="fp64_t" unit="Hz">
+      <description>
+        Magnitude frequency.
+      </description>
+    </field>
+  </message>
+
+  <message id="291" name="Stream turbulence acceleration" abbrev="StreamTurbAccel" source="vehicle" flags="periodic">
+    <description>
+      Vector quantifying the magnitude of the stream turbulence
+      acceleration to which a device is exposed to.
+    </description>
+    <field name="Total acceleration" abbrev="accel" type="fp64_t" unit="m/s/s">
+      <description>
+        Turbulence acceleration magnitude.
       </description>
     </field>
   </message>
