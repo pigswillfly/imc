@@ -8168,11 +8168,11 @@
       <value abbrev="OPEN" name="Open" id="1"/>
       <value abbrev="CLOSED" name="Closed" id="2"/>
     </field>
-    <field name="ServoMinimum" abbrev="servmin" type="plaintext">
-      <description>Minimum range of this interval. Empty text means no min limit.</description>
+    <field name="ServoMinimum" abbrev="servmin" type="uint32_t">
+      <description>Minimum range of this interval (0º).</description>
     </field>
-    <field name="ServoMaximum" abbrev="servmax" type="plaintext">
-      <description>Maximum range of this interval. Empty text means no max limit.</description>
+    <field name="ServoMaximum" abbrev="servmax" type="uint32_t">
+      <description>Maximum range of this interval (180º).</description>
     </field>
   </message>
   
