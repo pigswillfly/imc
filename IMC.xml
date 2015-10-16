@@ -8148,6 +8148,37 @@
     </description>
   </message>
 
+  <message id="1991" name="Thermal Camera Control" abbrev="ThermalCamControl">
+    <description>
+			Message containing the protocol for thermal camera control.   
+    </description>
+    <field name="Process code" abbrev="processCode" type="uint8_t">
+      <description>
+      	Process code. 0x6E for all valid messages to/from thermal cam.
+      </description>
+    </field>
+    <field name="Status" abbrev="status" type="uint8_t">
+      <description>
+      	Thermal camera status.
+      </description>
+    </field>
+    <field name="Function" abbrev="function" type="uint8_t">
+      <description>
+        Function of command.
+      </description>
+    </field>
+    <field name="Byte count" abbrev="byteCount" type="uint16_t">
+      <description>
+        Byte count for command argument.
+      </description>
+    </field>
+    <field name="Arguments" abbrev="args" type="rawdata">
+      <description>
+        Byte vector of command arguments.
+      </description>
+    </field>
+  </message>
+
   <!-- BEGIN NECSAVE Messages -->
 
   <message id="2001" abbrev="NecMsg" name="NECSAVE Message">
